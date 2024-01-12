@@ -1,0 +1,7 @@
+{
+  "Evolve.Driver": "MySQL.Data",
+  "Evolve.ConnectionString": "Server=db;Port=3306;Database=docker_from_zero_to_mastery_dotnet;Uid=root;Pwd=docker;SslMode=none;",
+  "Evolve.Locations": "db",
+  "Evolve.Command": "",
+  "Evolve.Placeholder.table4": "table_4"
+}

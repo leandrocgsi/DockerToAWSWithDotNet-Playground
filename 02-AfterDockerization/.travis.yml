@@ -1,0 +1,20 @@
+sudo: required
+dist: bionic
+language: csharp
+mono: none
+dotnet: 2.0.0
+script:
+  - docker-compose build
+before_deploy:
+  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+deploy:
+  provider: script
+  script:
+    docker tag docker-from-zero-to-mastery-dotnet-mysql-db:latest $DOCKER_USERNAME/docker-from-zero-to-mastery-dotnet-mysql-db:latest;
+    docker tag docker-from-zero-to-mastery-dotnet:latest $DOCKER_USERNAME/docker-from-zero-to-mastery-dotnet:latest;
+    docker push $DOCKER_USERNAME/docker-from-zero-to-mastery-dotnet-mysql-db:latest;
+    docker push $DOCKER_USERNAME/docker-from-zero-to-mastery-dotnet:latest;
+  on:
+    brach: master
+notifications:
+  email: false
